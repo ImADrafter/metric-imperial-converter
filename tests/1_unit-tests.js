@@ -6,7 +6,7 @@
 *       (if additional are added, keep them at the very end!)
 */
 
-var chai = require('chai');
+import chai from 'chai';
 var assert = chai.assert;
 var ConvertHandler = require('../controllers/convertHandler.js');
 

@@ -27,8 +27,8 @@
 
 'use strict';
 
-var cors = require('cors');
-var fs = require('fs');
+import cors from 'cors';
+import fs from 'fs';
 var runner = require('../test-runner');
 
 module.exports = function (app) {

@@ -1,9 +1,9 @@
 'use strict';
 
-var express     = require('express');
-var bodyParser  = require('body-parser');
-var expect      = require('chai').expect;
-var cors        = require('cors');
+import express from 'express';
+import bodyParser from 'body-parser';
+import {expect} from 'chai'
+import cors from 'cors';
 
 var apiRoutes         = require('./routes/api.js');
 var fccTestingRoutes  = require('./routes/fcctesting.js');
