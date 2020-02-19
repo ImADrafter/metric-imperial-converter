@@ -5,9 +5,9 @@ import bodyParser from 'body-parser';
 import {expect} from 'chai'
 import cors from 'cors';
 
-var apiRoutes         = require('./routes/api.js');
-var fccTestingRoutes  = require('./routes/fcctesting.js');
-var runner            = require('./test-runner');
+import apiRoutes from './routes/api.js'
+import fccTestingRoutes from './routes/fcctesting.js'
+import runner from './test-runner'
 
 var app = express();
 

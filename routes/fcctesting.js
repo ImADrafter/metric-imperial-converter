@@ -29,7 +29,7 @@
 
 import cors from 'cors';
 import fs from 'fs';
-var runner = require('../test-runner');
+import runner from '../test-runner'
 
 module.exports = function (app) {
 

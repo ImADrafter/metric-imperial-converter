@@ -9,7 +9,7 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 var assert = chai.assert;
-var server = require('../server');
+import server from '../server'
 
 chai.use(chaiHttp);
 

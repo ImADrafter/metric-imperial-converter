@@ -25,7 +25,7 @@
 *
 */
 
-var analyser = require('./assertion-analyser');
+import analyser from './assertion-analyser'
 var EventEmitter = require('events').EventEmitter;
 
 var Mocha = require('mocha'),

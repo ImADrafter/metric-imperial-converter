@@ -8,7 +8,7 @@
 
 import chai from 'chai';
 var assert = chai.assert;
-var ConvertHandler = require('../controllers/convertHandler.js');
+import ConvertHandler from '../controllers/convertHandler.js'
 
 var convertHandler = new ConvertHandler();
 
