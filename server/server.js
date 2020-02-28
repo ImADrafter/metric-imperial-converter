@@ -7,11 +7,15 @@ import express from "express";
 import apiRoutes from "./routes/api";
 import fccTestingRoutes from "./routes/fcctesting";
 import runner from "./test-runner";
+// eslint-disable-next-line import/no-unresolved
 import customEnv from "custom-env";
+import helmet from 'helmet';
+
 customEnv.env();
 
 const app = express();
 
+app.use(helmet());
 app.use("/public", express.static(process.cwd() + "/public"));
 
 app.use(cors({ origin: "*" })); //For FCC testing purposes only

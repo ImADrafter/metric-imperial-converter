@@ -1,0 +1,18 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	color: #3d3d3d;
+	font-family: Spartan;
+}
+
+body {
+	background-color: aliceblue;
+}
+
+h1 {
+	padding: 20px;
+}
+
+ul {
+	padding: 10px;
+}

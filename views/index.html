@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to HyperDev!</title>
+    <title>Metric-Imperial Converter</title>
     <meta name="description" content="A cool thing made with HyperDev">
+    <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
     <link id="favicon" rel="icon" href="https://hyperdev.com/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +18,7 @@
     </header>
     <div id='userstories' style='margin-left: 5%; margin-top: 5%'>
       <h3>User Stories</h3>
-      <ol>
+      <ul>
         <li>I will help prevent the client from trying to guess(sniff) the MIME type.</li>
         <li>I will prevent cross-site scripting (XSS) attacks.</li>
         <li>I can <b>GET</b> <code>/api/convert</code> with a single parameter containing an accepted number and unit and have it converted.</li>
@@ -32,7 +33,7 @@
         <li>My return will consist of the initNum, initUnit, returnNum, returnUnit, and string spelling out units in format <code>{initNum} {initial_Units} converts to {returnNum} {return_Units}</code> with the result rounded to 5 decimals.</li>
         <li>All 16 unit tests are complete and passing.</li>
         <li>All 5 functional tests are complete and passing.</li>
-      </ol>
+      </ul>
       <h3>Example usage:</h3>
       <code>/api/convert?input=4gal</code><br>
       <code>/api/convert?input=1/2km</code><br>
@@ -45,7 +46,7 @@
     <div id='testui' style='margin-left: 5%'>
       <h2 style="text-align: left">Front-End:</h2>
       <form id="convertForm" class="border">
-        <input type="text" id="convertField" name="input" placeholder="3.1mi" style="width: 200px">
+        <input type="text" id="convertField" name="input" placeholder="3.1mi" style="width: 200px" required="true">
         <input id="convert" type="submit" value='Convert!'>
       </form>
       <p id='result'></p>
