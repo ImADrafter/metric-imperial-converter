@@ -7,27 +7,25 @@
  */
 
 // const expect = require("chai").expect;
-import ConvertHandler from "../controllers/convertHandler.js";
+import {
+  getNum,
+  getUnit,
+  convert,
+  getReturnUnit,
+  getString
+} from "../controllers/convertHandler";
 
 const apiRoutes = app => {
-  const convertHandler = new ConvertHandler();
+  app.route("/api/convert").get((req, res) => {
+    const input = req.query.input;
+    const initNum = getNum(input);
+    const initUnit = getUnit(input);
+    const returnNum = convert(initNum, initUnit);
+    const returnUnit = getReturnUnit(initUnit);
+    const toString = getString(initNum, initUnit, returnNum, returnUnit);
 
-  app.route("/api/convert").get(
-    (req, res) => "somthing"
-    // const input = req.query.input;
-    // const initNum = convertHandler.getNum(input);
-    // const initUnit = convertHandler.getUnit(input);
-    // const returnNum = convertHandler.convert(initNum, initUnit);
-    // const returnUnit = convertHandler.getReturnUnit(initUnit);
-    // const toString = convertHandler.getString(
-    //   initNum,
-    //   initUnit,
-    //   returnNum,
-    //   returnUnit
-    // );
-
-    //res.json
-  );
+    res.json(toString);
+  });
 };
 
 export default apiRoutes;
