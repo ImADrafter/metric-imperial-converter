@@ -1,7 +1,9 @@
-const splitDigitAndUnitRegex = /\W*(\d+\.*\d*)\W*(\w+)/;
+const splitDigitAndUnitRegex = /\W*(\d+\.*\d*)\W*(\w*)/;
 
-const round = (value, decimals) =>
-  Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+const round = (value, decimals) => {
+  // Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+  value.toFixed(decimals);
+};
 
 const refineInput = input => {
   const refinedInput = input.match(splitDigitAndUnitRegex);
