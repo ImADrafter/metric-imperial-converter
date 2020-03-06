@@ -2,7 +2,7 @@
 	"name": "my-hyperdev-app",
 	"version": "0.0.1",
 	"description": "What am I about?",
-	"main": "server.js",
+	"main": "./build/server.js",
 	"babel": {
 		"presets": [
 			"@babel/preset-env"
@@ -15,12 +15,13 @@
 		]
 	},
 	"scripts": {
-		"transpile": "babel ./server --out-dir dist-server",
-		"clean": "rimraf dist-server",
+		"transpile": "babel ./server --out-dir build",
+		"clean": "rimraf build",
 		"build": "npm run clean && npm run transpile",
-		"dev": "npm run clean && npm run transpile && node ./dist-server/server.js",
+		"dev": "npm run clean && npm run transpile && node ./build/server.js",
 		"prod": "NODE_ENV=production npm-run-all build server",
-		"watch:dev": "nodemon"
+		"watch:dev": "nodemon",
+		"start": "npm run build && node ./build/server.js"
 	},
 	"dependencies": {
 		"@babel/cli": "^7.8.4",
