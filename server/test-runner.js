@@ -28,9 +28,15 @@
 import analyser from "./assertion-analyser";
 // import { EventEmitter } from "events";
 import Mocha from "mocha";
+/*
+ * It seems that build-int functions should not be imported.
+TODO: Find a way to avoid, without importint built-in modules, to call the function without linter exceptions.
+*/
+/* eslint-disable import/no-nodejs-modules */
 import { readdirSync } from "fs";
 import { EventEmitter } from "events";
 import path from "path";
+/* eslint-enable import/no-nodejs-modules */
 const mocha = new Mocha();
 const testDir = "./tests";
 

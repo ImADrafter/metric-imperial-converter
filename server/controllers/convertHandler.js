@@ -18,7 +18,7 @@ const getUnit = input => refineInput(input).unit;
 
 const conversionMap = {
   gal: {
-    conversionUnit: "l",
+    conversionUnit: "L",
     spell: "gallons",
     conversion: number => round(number * 3.78541, 5)
   },
