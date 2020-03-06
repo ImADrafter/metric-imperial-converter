@@ -17,7 +17,7 @@
 	"scripts": {
 		"transpile": "babel ./server --out-dir dist-server",
 		"clean": "rimraf dist-server",
-		"build": "npm-run-all clean transpile",
+		"build": "npm run clean && npm run transpile",
 		"dev": "npm run clean && npm run transpile && node ./dist-server/server.js",
 		"prod": "NODE_ENV=production npm-run-all build server",
 		"watch:dev": "nodemon"
