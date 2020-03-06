@@ -16,12 +16,15 @@ const getNum = input => refineInput(input).inputNumber;
 
 const getUnit = input => refineInput(input).unit;
 
+const gallons = {
+  conversionUnit: "l",
+  spell: "gallons",
+  conversion: number => round(number * 3.78541, 5)
+};
+
 const conversionMap = {
-  gal: {
-    conversionUnit: "L",
-    spell: "gallons",
-    conversion: number => round(number * 3.78541, 5)
-  },
+  gal: gallons,
+  gallons,
   l: {
     conversionUnit: "gal",
     spell: "liters",
