@@ -3,6 +3,9 @@
 	"version": "0.0.1",
 	"description": "What am I about?",
 	"main": "./build/server.js",
+	"prettier":{
+		"singleQuote": true
+	},
 	"babel": {
 		"presets": [
 			"@babel/preset-env"

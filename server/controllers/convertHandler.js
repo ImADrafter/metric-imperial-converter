@@ -1,16 +1,19 @@
-const splitDigitAndUnitRegex = /\W*(\d+\.*\d*)\W*(\w*)/;
+// TODO: Rewrite this regex
+// const splitDigitAndUnitRegex = /(\d+|\d+\.\d+|\d+\/\d+|\d+\.\d+\/\d+)(\w)/;
+const splitDigitAndUnitRegex = /(\d+\.\d+\/\d+|\d+\/\d+|\d+\.\d+|\d+)([a-zA-Z])/;
 
-const round = (value, decimals) => {
+const round = (value, decimals = 5) => {
   // Number(Math.round(value + "e" + decimals) + "e-" + decimals);
   value.toFixed(decimals);
 };
 
 const refineInput = input => {
   const refinedInput = input.match(splitDigitAndUnitRegex);
-  const [, inputNumber, unit] = refinedInput;
+  const [, inputNumber = 1, unit] =
+    refinedInput !== null ? refinedInput : ['invalid number', 'invalid unit'];
   return {
-    inputNumber: !isNaN(inputNumber) ? inputNumber : "invalid number",
-    unit: unit.toLowerCase()
+    inputNumber: !isNaN(inputNumber) ? inputNumber : 'invalid number',
+    unit: unit || 'invalid input'
   };
 };
 
@@ -19,52 +22,52 @@ const getNum = input => refineInput(input).inputNumber;
 const getUnit = input => refineInput(input).unit;
 
 const gallons = {
-  conversionUnit: "l",
-  spell: "gallons",
-  conversion: number => round(number * 3.78541, 5)
+  conversionUnit: 'L',
+  spell: 'gallons',
+  conversion: number => round(number * 3.78541)
 };
 
 const conversionMap = {
   gal: gallons,
   gallons,
-  l: {
-    conversionUnit: "gal",
-    spell: "liters",
-    conversion: number => round(number / 3.78541, 5)
+  L: {
+    conversionUnit: 'gal',
+    spell: 'liters',
+    conversion: number => round(number / 3.78541)
   },
   lbs: {
-    conversionUnit: "kg",
-    spell: "librers",
-    conversion: number => round(number * 0.453592, 5)
+    conversionUnit: 'kg',
+    spell: 'librers',
+    conversion: number => round(number * 0.453592)
   },
   kg: {
-    conversionUnit: "lbs",
-    spell: "kilograms",
-    conversion: number => round(number / 0.453592, 5)
+    conversionUnit: 'lbs',
+    spell: 'kilograms',
+    conversion: number => round(number / 0.453592)
   },
   mi: {
-    conversionUnit: "km",
-    spell: "milles",
-    conversion: number => round(number * 1.60934, 5)
+    conversionUnit: 'km',
+    spell: 'milles',
+    conversion: number => round(number * 1.60934)
   },
   km: {
-    conversionUnit: "mi",
-    spell: "kilometers",
-    conversion: number => round(number / 1.60934, 5)
+    conversionUnit: 'mi',
+    spell: 'kilometers',
+    conversion: number => round(number / 1.60934)
   }
 };
 
 const getReturnUnit = initUnit =>
   conversionMap[initUnit]
     ? conversionMap[initUnit].conversionUnit
-    : "invalid unit";
+    : 'invalid unit';
 
 const spellOutUnit = unit =>
-  conversionMap[unit] ? conversionMap[unit].spell : "invalid unit";
+  conversionMap[unit] ? conversionMap[unit].spell : 'invalid unit';
 
 const convert = (initNum, initUnit) => {
   const { conversion } = conversionMap[initUnit] || {
-    conversion: () => "invalid unit"
+    conversion: () => 'invalid unit'
   };
   return conversion(initNum);
 };
@@ -75,9 +78,9 @@ const getString = (initNum, initUnit, returnNum, returnUnit) => ({
   returnNum,
   returnUnit,
   string: `${initNum} ${
-    conversionMap[initUnit] ? conversionMap[initUnit].spell : "invalid unit"
+    conversionMap[initUnit] ? conversionMap[initUnit].spell : 'invalid unit'
   } converts to ${returnNum} ${
-    conversionMap[returnUnit] ? conversionMap[returnUnit].spell : "invalid unit"
+    conversionMap[returnUnit] ? conversionMap[returnUnit].spell : 'invalid unit'
   }`
 });
 // `Has introducido ${initNum} en ${initUnit}. Tu respuesta es ${returnNum} en ${returnUnit}`;
