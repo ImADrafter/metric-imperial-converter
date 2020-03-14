@@ -96,7 +96,7 @@ describe('Unit Tests', () => {
     });
   });
 
-  describe.skip('Function getReturnUnit(initUnit)', () => {
+  describe('Function getReturnUnit(initUnit)', () => {
     it('For Each Valid Unit Inputs', done => {
       const input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
       const expect = ['l', 'gal', 'km', 'mi', 'kg', 'lbs'];

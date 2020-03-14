@@ -24,16 +24,13 @@ const getUnit = input => {
   return wholeMatch;
 };
 
-const gallons = {
-  conversionUnit: 'L',
-  spell: 'gallons',
-  conversion: number => round(number * 3.78541)
-};
-
 const conversionMap = {
-  gal: gallons,
-  gallons,
-  L: {
+  gal: {
+    conversionUnit: 'l',
+    spell: 'gallons',
+    conversion: number => round(number * 3.78541)
+  },
+  l: {
     conversionUnit: 'gal',
     spell: 'liters',
     conversion: number => round(number / 3.78541)
@@ -60,10 +57,7 @@ const conversionMap = {
   }
 };
 
-const getReturnUnit = initUnit =>
-  conversionMap[initUnit]
-    ? conversionMap[initUnit].conversionUnit
-    : 'invalid unit';
+const getReturnUnit = initUnit => conversionMap[initUnit].conversionUnit;
 
 const spellOutUnit = unit =>
   conversionMap[unit] ? conversionMap[unit].spell : 'invalid unit';
