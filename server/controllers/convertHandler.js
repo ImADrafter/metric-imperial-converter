@@ -2,10 +2,7 @@ const getDigits = /\d+(\.\d+\/\d+|\/\d+|\.\d+)?/;
 const decimalInput = /\d+\.\d+(?!\/+)/;
 const getUnitRegExp = /(lbs|LBS|gal|mi|km|kg|GAL|L|MI|KM|KG|l)(?=\s*)/;
 
-const round = (value, decimals = 5) => {
-  // Number(Math.round(value + "e" + decimals) + "e-" + decimals);
-  value.toFixed(decimals);
-};
+const round = (value, decimals = 5) => Number(value.toFixed(decimals));
 
 const getNum = input => {
   if (input.includes('//') || !input.match(/.*\d+.*/g)) {
@@ -63,10 +60,11 @@ const spellOutUnit = unit =>
   conversionMap[unit] ? conversionMap[unit].spell : 'invalid unit';
 
 const convert = (initNum, initUnit) => {
-  const { conversion } = conversionMap[initUnit] || {
-    conversion: () => 'invalid unit'
-  };
-  return conversion(initNum);
+  // const { conversion } = conversionMap[initUnit];
+  const { conversion } = conversionMap[initUnit];
+  const output = conversion(Number(initNum));
+  // console.log(output);
+  return output;
 };
 
 const getString = (initNum, initUnit, returnNum, returnUnit) => ({

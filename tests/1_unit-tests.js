@@ -125,7 +125,7 @@ describe('Unit Tests', () => {
     });
   });
 
-  describe.skip('Function convert(num, unit)', () => {
+  describe('Function convert(num, unit)', () => {
     it('Gal to L', done => {
       const input = [5, 'gal'];
       const expected = 18.9271;
@@ -134,23 +134,38 @@ describe('Unit Tests', () => {
     });
 
     it('L to Gal', done => {
-      //done();
+      const input = [5, 'l'];
+      const expected = 1.32086;
+      assert.approximately(convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
 
     it('Mi to Km', done => {
-      //done();
+      const input = [5, 'mi'];
+      const expected = 8.04672;
+      assert.approximately(convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
 
     it('Km to Mi', done => {
-      //done();
+      const input = [5, 'km'];
+      const expected = 3.10686;
+      assert.approximately(convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
 
     it('Lbs to Kg', done => {
-      //done();
+      const input = [5, 'lbs'];
+      const expected = 2.26796;
+      assert.approximately(convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
 
     it('Kg to Lbs', done => {
-      //done();
+      const input = [5, 'kg'];
+      const expected = 11.0231;
+      assert.approximately(convert(input[0], input[1]), expected, 0.1); //0.1 tolerance
+      done();
     });
   });
 });
