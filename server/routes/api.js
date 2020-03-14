@@ -13,10 +13,10 @@ import {
   convert,
   getReturnUnit,
   getString
-} from "../controllers/convertHandler";
+} from '../controllers/convertHandler';
 
 const apiRoutes = app => {
-  app.route("/api/convert").get((req, res) => {
+  app.route('/api/convert').get((req, res) => {
     const input = req.query.input;
     const initNum = getNum(input);
     const initUnit = getUnit(input);

@@ -8,15 +8,14 @@
 
 // !It seems that FCC test running is failing. Try the unit testing in here: https://pricey-hugger.glitch.me/
 
-import chai, { assert } from 'chai';
+import { assert } from 'chai';
 import { describe, it } from 'mocha';
 import {
-  getNum,
-  getUnit,
-  getReturnUnit,
-  spellOutUnit,
   convert,
-  getString
+  getNum,
+  getReturnUnit,
+  getUnit,
+  spellOutUnit
 } from '../server/controllers/convertHandler';
 
 describe('Unit Tests', () => {

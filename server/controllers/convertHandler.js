@@ -54,17 +54,28 @@ const conversionMap = {
   }
 };
 
-const getReturnUnit = initUnit => conversionMap[initUnit].conversionUnit;
+const getReturnUnit = initUnit => {
+  // const { conversion } = conversionMap[initUnit];
+  const unitToLowerCase = initUnit.toLowerCase();
+  if (conversionMap[unitToLowerCase]) {
+    return conversionMap[unitToLowerCase].conversionUnit;
+  }
+
+  return 'invalid unit';
+};
 
 const spellOutUnit = unit =>
   conversionMap[unit] ? conversionMap[unit].spell : 'invalid unit';
 
 const convert = (initNum, initUnit) => {
-  // const { conversion } = conversionMap[initUnit];
-  const { conversion } = conversionMap[initUnit];
-  const output = conversion(Number(initNum));
-  // console.log(output);
-  return output;
+  const unitToLowerCase = initUnit.toLowerCase();
+  if (conversionMap[unitToLowerCase]) {
+    const { conversion } = conversionMap[unitToLowerCase];
+    const output = conversion(Number(initNum));
+    return output;
+  }
+
+  return 'invalid unit';
 };
 
 const getString = (initNum, initUnit, returnNum, returnUnit) => ({
