@@ -52,16 +52,19 @@ describe('Unit Tests', () => {
     it('Invalid Input (double fraction)', done => {
       const input = '2.5//2';
       const output = getNum(input);
-      assert.equal(output, 'invalid input');
+      assert.equal(output, 'invalid number');
       done();
     });
 
     it('No Numerical Input', done => {
-      //done();
+      const input = 'caca';
+      const output = getNum(input);
+      assert.equal(output, 'invalid number');
+      done();
     });
   });
 
-  describe('Function getUnit(input)', () => {
+  describe.skip('Function getUnit(input)', () => {
     it('For Each Valid Unit Inputs', done => {
       const input = [
         'gal',
@@ -88,7 +91,7 @@ describe('Unit Tests', () => {
     });
   });
 
-  describe('Function getReturnUnit(initUnit)', () => {
+  describe.skip('Function getReturnUnit(initUnit)', () => {
     it('For Each Valid Unit Inputs', done => {
       const input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
       const expect = ['l', 'gal', 'km', 'mi', 'kg', 'lbs'];
@@ -99,14 +102,14 @@ describe('Unit Tests', () => {
     });
   });
 
-  describe('Function spellOutUnit(unit)', () => {
+  describe.skip('Function spellOutUnit(unit)', () => {
     it('For Each Valid Unit Inputs', done => {
       //see above example for hint
       done();
     });
   });
 
-  describe('Function convert(num, unit)', () => {
+  describe.skip('Function convert(num, unit)', () => {
     it('Gal to L', done => {
       const input = [5, 'gal'];
       const expected = 18.9271;

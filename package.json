@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "What am I about?",
 	"main": "./build/server.js",
-	"prettier":{
+	"prettier": {
 		"singleQuote": true
 	},
 	"babel": {
@@ -16,7 +16,6 @@
 		"watch": [
 			"./server/*"
 		]
-		
 	},
 	"scripts": {
 		"transpile": "babel ./server --out-dir build",

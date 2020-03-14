@@ -1,25 +1,26 @@
 // TODO: Rewrite this regex
+
 // const splitDigitAndUnitRegex = /(\d+|\d+\.\d+|\d+\/\d+|\d+\.\d+\/\d+)(\w)/;
-const splitDigitAndUnitRegex = /(\d+\.\d+\/\d+|\d+\/\d+|\d+\.\d+|\d+)([a-zA-Z])/;
+const getDigits = /\d+(\.\d+\/\d+|\/\d+|\.\d+)?/;
+const decimalInput = /\d+\.\d+(?!\/+)/;
+// const doubleFraction = /\/{2,}/;
 
 const round = (value, decimals = 5) => {
   // Number(Math.round(value + "e" + decimals) + "e-" + decimals);
   value.toFixed(decimals);
 };
 
-const refineInput = input => {
-  const refinedInput = input.match(splitDigitAndUnitRegex);
-  const [, inputNumber = 1, unit] =
-    refinedInput !== null ? refinedInput : ['invalid number', 'invalid unit'];
-  return {
-    inputNumber: !isNaN(inputNumber) ? inputNumber : 'invalid number',
-    unit: unit || 'invalid input'
-  };
+const getNum = input => {
+  if (input.includes('//') || !input.match(/.*\d+.*/g)) {
+    return 'invalid number';
+  }
+  const userNumber = input.match(getDigits);
+  const [wholeMatch] = userNumber;
+  if (wholeMatch.match(decimalInput)) return Number(wholeMatch).toFixed(5);
+  return wholeMatch;
 };
 
-const getNum = input => refineInput(input).inputNumber;
-
-const getUnit = input => refineInput(input).unit;
+const getUnit = input => {};
 
 const gallons = {
   conversionUnit: 'L',
