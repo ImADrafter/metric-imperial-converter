@@ -37,7 +37,7 @@ const conversionMap = {
   },
   lbs: {
     conversionUnit: 'kg',
-    spell: 'librers',
+    spell: 'pound',
     conversion: number => round(number * 0.453592)
   },
   kg: {

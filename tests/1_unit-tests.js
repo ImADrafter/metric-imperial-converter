@@ -107,9 +107,20 @@ describe('Unit Tests', () => {
     });
   });
 
-  describe.skip('Function spellOutUnit(unit)', () => {
+  describe('Function spellOutUnit(unit)', () => {
     it('For Each Valid Unit Inputs', done => {
-      //see above example for hint
+      const input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
+      const expect = [
+        'gallons',
+        'liters',
+        'milles',
+        'kilometers',
+        'pound',
+        'kilograms'
+      ];
+      input.forEach((ele, i) => {
+        assert.equal(spellOutUnit(ele), expect[i]);
+      });
       done();
     });
   });
