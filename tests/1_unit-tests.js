@@ -64,7 +64,7 @@ describe('Unit Tests', () => {
     });
   });
 
-  describe.skip('Function getUnit(input)', () => {
+  describe('Function getUnit(input)', () => {
     it('For Each Valid Unit Inputs', done => {
       const input = [
         'gal',
@@ -80,14 +80,19 @@ describe('Unit Tests', () => {
         'LBS',
         'KG'
       ];
-      input.forEach(ele => {
-        //assert
+      input.forEach(unit => {
+        const input = '15' + unit;
+        const output = getUnit(input);
+        assert.equal(output, unit);
       });
       done();
     });
 
     it('Unknown Unit Input', done => {
-      //done();
+      const input = '18Btg';
+      const output = getUnit(input);
+      assert.equal(output, 'invalid unit');
+      done();
     });
   });
 

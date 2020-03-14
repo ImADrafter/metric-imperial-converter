@@ -1,9 +1,6 @@
-// TODO: Rewrite this regex
-
-// const splitDigitAndUnitRegex = /(\d+|\d+\.\d+|\d+\/\d+|\d+\.\d+\/\d+)(\w)/;
 const getDigits = /\d+(\.\d+\/\d+|\/\d+|\.\d+)?/;
 const decimalInput = /\d+\.\d+(?!\/+)/;
-// const doubleFraction = /\/{2,}/;
+const getUnitRegExp = /(lbs|LBS|gal|mi|km|kg|GAL|L|MI|KM|KG|l)(?=\s*)/;
 
 const round = (value, decimals = 5) => {
   // Number(Math.round(value + "e" + decimals) + "e-" + decimals);
@@ -20,7 +17,12 @@ const getNum = input => {
   return wholeMatch;
 };
 
-const getUnit = input => {};
+const getUnit = input => {
+  const userUnit = input.match(getUnitRegExp);
+  if (!userUnit) return 'invalid unit';
+  const [wholeMatch] = userUnit;
+  return wholeMatch;
+};
 
 const gallons = {
   conversionUnit: 'L',
