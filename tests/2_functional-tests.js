@@ -46,14 +46,22 @@ describe('Functional Tests', () => {
       });
 
       test('Convert 3/7.2/4kg (invalid number)', done => {
+        chai
+          .request(server)
+          .get('/api/convert')
+          .query({ input: '3/7.2/4kg' })
+          .end((err, res) => {
+            assert.equal(res.status, 200);
+            assert.equal(res.body.initNum, 'invalid number');
+            done();
+          });
+      });
+
+      test.skip('Convert 3/7.2/4kilomegagram (invalid number and unit)', done => {
         //done();
       });
 
-      test('Convert 3/7.2/4kilomegagram (invalid number and unit)', done => {
-        //done();
-      });
-
-      test('Convert kg (no number)', done => {
+      test.skip('Convert kg (no number)', done => {
         //done();
       });
     });

@@ -5,7 +5,11 @@ const getUnitRegExp = /(lbs|LBS|gal|mi|km|kg|GAL|L|MI|KM|KG|l)(?=\s*)/;
 const round = (value, decimals = 5) => Number(value.toFixed(decimals));
 
 const getNum = input => {
-  if (input.includes('//') || !input.match(/.*\d+.*/g)) {
+  if (
+    input.includes('//') ||
+    !input.match(/.*\d+.*/g) ||
+    input.match(/(.+\/.*){2,}/)
+  ) {
     return 'invalid number';
   }
   const userNumber = input.match(getDigits);
