@@ -15,6 +15,10 @@ const getNum = input => {
   const userNumber = input.match(getDigits);
   const [wholeMatch] = userNumber;
   if (wholeMatch.match(decimalInput)) return Number(wholeMatch).toFixed(5);
+  if (wholeMatch.includes('/')) {
+    const splitInput = wholeMatch.split('/');
+    return parseFloat(splitInput[0] / splitInput[1]);
+  }
   return wholeMatch;
 };
 

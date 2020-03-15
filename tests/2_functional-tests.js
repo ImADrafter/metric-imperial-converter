@@ -53,6 +53,9 @@ describe('Functional Tests', () => {
           .end((err, res) => {
             assert.equal(res.status, 200);
             assert.equal(res.body.initNum, 'invalid number');
+            assert.equal(res.body.initUnit, 'kg');
+            assert.equal(res.body.returnUnit, 'lbs');
+
             done();
           });
       });

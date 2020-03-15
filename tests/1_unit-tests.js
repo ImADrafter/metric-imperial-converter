@@ -37,14 +37,14 @@ describe('Unit Tests', () => {
     it('Fractional Input', done => {
       const input = '1/2';
       const output = getNum(input);
-      assert.equal(output, input);
+      assert.equal(output, 1 / 2);
       done();
     });
 
     it('Fractional Input w/ Decimal', done => {
       const input = '2.5/2';
       const output = getNum(input);
-      assert.equal(output, input);
+      assert.equal(output, 2.5 / 2);
       done();
     });
 
